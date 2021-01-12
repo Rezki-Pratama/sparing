@@ -1,4 +1,5 @@
 
+import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
 
 class Splash extends StatefulWidget {
@@ -10,7 +11,9 @@ class _SplashState extends State<Splash> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: Text('splash'),),
+      body: FlareActor(
+       "assets/flare/splash.flr", fit: BoxFit.cover, animation: "splash", 
+      ),
     );
   }
 }

@@ -2,7 +2,7 @@ part of 'auth_bloc.dart';
 
 abstract class AuthState extends Equatable {
   const AuthState();
-  
+
   @override
   List<Object> get props => [];
 }
@@ -10,27 +10,25 @@ abstract class AuthState extends Equatable {
 class AuthInitial extends AuthState {}
 
 class Authenticated extends AuthState {
-  final String userId;
+  final User user;
 
-  Authenticated({
-    this.userId
-  });
+  Authenticated(this.user);
 
   @override
-  List<Object> get props => [userId];
+  List<Object> get props => [user.uid];
 
   @override
-  String toString() => " Authenticated {userId} ";
+  String toString() => " Authenticated {user.uid} ";
 }
 
 class AuthenticatedButNotSet extends AuthState {
-  final String userId;
+  final User user;
 
-  AuthenticatedButNotSet(this.userId);
+  AuthenticatedButNotSet(this.user);
 
   //compare with equatable
   @override
-  List<Object> get props => [userId];
+  List<Object> get props => [user];
 }
 
 class UnAuthenticated extends AuthState {}

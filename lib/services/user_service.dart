@@ -12,7 +12,7 @@ class UserServices {
   }
 
   //check if first time login
-  Future<bool> isFirstTime(Users user) {
+  Future<bool> isFirstTime(User user) {
     return _firebaseFirestore
         .collection('users')
         .doc(user.uid)
@@ -37,8 +37,8 @@ class UserServices {
   }
 
   //geti uid
-  Future<String> getUser() async {
+  Future<User> getUser() async {
     final currentUser = _firebaseAuth.currentUser;
-    return currentUser.uid;
+    return currentUser;
   }
 }
