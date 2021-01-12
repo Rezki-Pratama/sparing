@@ -49,7 +49,7 @@ class _LoginState extends State<Login> {
                 )),
             SizedBox(height: size.height * 0.03),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: size.height * 0.02),
+              padding: EdgeInsets.symmetric(horizontal: size.height * 0.03),
               child: Material(
                     elevation: 14,
                     borderRadius: BorderRadius.circular(size.height * 0.03),
