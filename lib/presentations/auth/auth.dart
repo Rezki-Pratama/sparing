@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sparing/presentations/favourite/favourite.dart';
 import 'package:sparing/presentations/home/home.dart';
 import 'package:sparing/presentations/login/login.dart';
-import 'package:sparing/presentations/profile/profile.dart';
 import 'package:sparing/presentations/splash.dart';
 
 import 'bloc/auth_bloc.dart';
@@ -21,7 +21,7 @@ class Auth extends StatelessWidget {
             return Home();
           }
           if(state is AuthenticatedButNotSet) {
-            return Profile();
+            return Favourite();
           }
           if(state is UnAuthenticated) {
             return Login();

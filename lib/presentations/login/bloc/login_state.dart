@@ -30,5 +30,5 @@ class LoginFailState extends LoginState {
   LoginFailState(this.message);
 
   @override
-  List<Object> get props => null;
+  List<Object> get props => [];
 }
