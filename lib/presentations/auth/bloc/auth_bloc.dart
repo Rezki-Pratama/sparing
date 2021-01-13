@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:sparing/models/user.dart';
 import 'package:sparing/services/user_service.dart';
 
@@ -10,10 +11,12 @@ part 'auth_event.dart';
 part 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  AuthBloc() : super(AuthInitial());
-
   UserServices _userServices;
-  User _user;
+
+  AuthBloc({@required UserServices userServices})
+      : assert(userServices != null),
+        _userServices = userServices,
+        super(AuthInitial());
 
   @override
   Stream<AuthState> mapEventToState(
@@ -31,12 +34,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     try {
       final isSignIn = await _userServices.isSignedIn();
       if (isSignIn) {
-        final uid = await _userServices.getUser();
-        final isFirstTime = await _userServices.isFirstTime(_user);
+        final user = await _userServices.getUser();
+        final isFirstTime = await _userServices.isFirstTime(user);
         if (!isFirstTime) {
-          yield AuthenticatedButNotSet(_user);
+          yield AuthenticatedButNotSet(user);
         } else {
-          yield Authenticated(_user);
+          yield Authenticated(user);
         }
       } else {
         yield UnAuthenticated();

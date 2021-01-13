@@ -5,16 +5,22 @@ import 'package:sparing/models/user.dart';
 import 'package:sparing/utilities/error_codes.dart';
 
 class UserServices {
-  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
-  final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
+  final FirebaseAuth _firebaseAuth;
+  final FirebaseFirestore _firebaseFirestore;
 
-  Future<User> signInWithEmail(Users user) async {
-    try{
+  UserServices({FirebaseAuth firebaseAuth, FirebaseFirestore firebaseFirestore})
+      : _firebaseAuth = firebaseAuth ?? FirebaseAuth.instance,
+        _firebaseFirestore = firebaseFirestore ?? FirebaseFirestore.instance;
+
+  Future<User> signInWithEmailAndPassword(String email, String password) async {
+     try {
       var authResult = await _firebaseAuth.signInWithEmailAndPassword(
-        email: user.email, password: user.password);
-        return authResult.user;
-    }on PlatformException catch(e){
-       String authError = "";
+        email: email,
+        password: password,
+      );
+      return authResult.user;
+    } on PlatformException catch (e) {
+      String authError = "";
       switch (e.code) {
         case ErrorCodes.ERROR_C0DE_NETWORK_ERROR:
           authError = ErrorMessages.ERROR_C0DE_NETWORK_ERROR;
@@ -52,7 +58,7 @@ class UserServices {
   }
 
   //check if first time login
-  Future<bool> isFirstTime(User user) {
+  Future<bool> isFirstTime(User user) async {
     return _firebaseFirestore
         .collection('users')
         .doc(user.uid)
@@ -76,7 +82,7 @@ class UserServices {
     return currentUser != null;
   }
 
-  //geti uid
+  //get uid
   Future<User> getUser() async {
     final currentUser = _firebaseAuth.currentUser;
     return currentUser;

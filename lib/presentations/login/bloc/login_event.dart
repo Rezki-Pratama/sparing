@@ -12,5 +12,5 @@ class SignInWithCredential extends LoginEvent {
   SignInWithCredential({this.email, this.password});
 
   @override
-  List<Object> get props => throw UnimplementedError();
+  List<Object> get props => [email, password];
 }
