@@ -9,6 +9,18 @@ abstract class FavouriteEvent extends Equatable {
 
 class FavouriteIntial extends FavouriteEvent {}
 
-class LoadFavourite extends FavouriteEvent {
-  
+class LoadFavourite extends FavouriteEvent {}
+
+class AddFavourite extends FavouriteEvent {
+  final String sport;
+
+  AddFavourite({
+    this.sport
+  });
+
+  @override
+  List<Object> get props => [sport];
+
+  @override
+  String toString() => 'AddFavourite {sport: $sport}';
 }

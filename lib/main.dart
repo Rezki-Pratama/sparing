@@ -25,7 +25,7 @@ void main() async {
           AuthBloc(userServices: _userServices)..add(AppStarted()),
     ),
     BlocProvider<FavouriteBloc>(
-        create: (context) => FavouriteBloc(sportServices: _sportServices)),
+        create: (context) => FavouriteBloc(sportServices: _sportServices, userServices: _userServices)),
     BlocProvider<LoginBloc>(
       create: (context) => LoginBloc(userServices: _userServices),
     )
