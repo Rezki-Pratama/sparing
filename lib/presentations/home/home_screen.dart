@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:sparing/presentations/partner/partner.dart';
 import 'package:sparing/utilities/utilities.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -179,6 +180,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           onTap: (){
                             if(_searchController.text.isNotEmpty){
                             print(_searchController.text);
+                            Navigator.of(context).push(
+                                MaterialPageRoute(builder: (context) => Partner()));
+                          
                             }
                           },
                           child: Icon(Icons.search, color: Colors.white,)),
