@@ -3,7 +3,6 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:sparing/models/user.dart';
 import 'package:sparing/services/user_service.dart';
 
 part 'login_event.dart';

@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sparing/presentations/auth/bloc/auth_bloc.dart';
 import 'package:sparing/presentations/login/bloc/login_bloc.dart';
 import 'package:sparing/presentations/widget/custom_textfield.dart';
-import 'package:sparing/services/user_service.dart';
 import 'package:sparing/utilities/utilities.dart';
 
 class Login extends StatefulWidget {
@@ -15,7 +14,6 @@ class _LoginState extends State<Login> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   LoginBloc _loginBloc;
-  UserServices _userServices;
 
   @override
   Widget build(BuildContext context) {

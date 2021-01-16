@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sparing/utilities/utilities.dart';
 
 class CustomTextField extends StatelessWidget {
   final Size size;
